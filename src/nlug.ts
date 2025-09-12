@@ -7,34 +7,48 @@ interface NLUMapping {
 type NLGMapping = [Move, string][];
 
 const nluMapping: NLUMapping = {
-  "where is the lecture?": [{
-    type: "ask",
-    content: WHQ("booking_room"),
-  }],
-  "what's your favorite food?": [{
-    type: "ask",
-    content: WHQ("favorite_food"),
-  }],
-  pizza: [{
-    type: "answer",
-    content: "pizza",
-  }],
-  "dialogue systems 2": [{
-    type: "answer",
-    content: "LT2319",
-  }],
-  "dialogue systems": [{
-    type: "answer",
-    content: "LT2319",
-  }],
-  "friday": [{
-    type: "answer",
-    content: "friday",
-  }],
-  "tuesday": [{
-    type: "answer",
-    content: "tuesday",
-  }],
+  "where is the lecture?": [
+    {
+      type: "ask",
+      content: WHQ("booking_room"),
+    },
+  ],
+  "what's your favorite food?": [
+    {
+      type: "ask",
+      content: WHQ("favorite_food"),
+    },
+  ],
+  pizza: [
+    {
+      type: "answer",
+      content: "pizza",
+    },
+  ],
+  "dialogue systems 2": [
+    {
+      type: "answer",
+      content: "LT2319",
+    },
+  ],
+  "dialogue systems": [
+    {
+      type: "answer",
+      content: "LT2319",
+    },
+  ],
+  "friday": [
+    {
+      type: "answer",
+      content: "friday",
+    }
+  ],
+  "tuesday": [
+    {
+      type: "answer",
+      content: "tuesday",
+    }
+  ],
 };
 const nlgMapping: NLGMapping = [
   [{ type: "ask", content: WHQ("booking_course") }, "Which course?"],
@@ -72,7 +86,7 @@ export function nlg(moves: Move[]): string {
     }
     throw new Error(`Failed to generate move ${JSON.stringify(move)}`);
   }
-  const utterance = moves.map(generateMove).join(' ');
+  const utterance = moves.map(generateMove).join(" ");
   console.log("generated utterance:", utterance);
   return utterance;
 }
